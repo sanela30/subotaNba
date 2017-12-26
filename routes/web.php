@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\PlayersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['as'=>'all-teams', 'uses'=>'TeamsController@index']);
+Route::get('/{id}', ['as'=>'single-team', 'uses'=>'TeamsController@show']);
+Route::get('/player/{player_id}', ['as'=>'single-player', 'uses'=>'PlayersController@show']);
