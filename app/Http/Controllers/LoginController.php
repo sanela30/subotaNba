@@ -10,6 +10,14 @@ class loginController extends Controller
     {
         return $this->middleware('guest', ['except' => 'destroy']);
     }
+
+    public function verify($id){
+        $user=User::find($id);
+        $user->verify=true;
+        $user->save();
+        auth()->login($user);
+
+    }
     public function destroy()
     {
         auth()->logout();
