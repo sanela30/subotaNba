@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Team extends Model
 {
     protected $guarded=['id'];
+    protected $fillable = ['name', 'email', 'address', 'city'];
     public function players()
     {
         return $this->hasMany(Player::class);

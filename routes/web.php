@@ -14,5 +14,12 @@ use App\Http\Controllers\PlayersController;
 */
 
 Route::get('/', ['as'=>'all-teams', 'uses'=>'TeamsController@index']);
-Route::get('/{id}', ['as'=>'single-team', 'uses'=>'TeamsController@show']);
+Route::get('/team/{id}', ['as'=>'single-team', 'uses'=>'TeamsController@show']);
+
+Route::post('/register', 'RegisterController@store');
+Route::get('/register','RegisterController@create')->name('register');
+Route::get('/logout', 'LoginController@destroy');
+Route::get('/login', 'LoginController@create')->name('login');
+Route::post('/login', 'LoginController@store');
+Route::get('/player/{player_id}', ['as'=>'single-player', 'uses'=>'PlayersController@show']);
 Route::get('/player/{player_id}', ['as'=>'single-player', 'uses'=>'PlayersController@show']);
